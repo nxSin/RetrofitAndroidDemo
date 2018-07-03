@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get获取" />
+
+    <Button
+        android:id="@+id/btn_getMAP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get,map方式获取" />
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="post获取" />
+
+    <Button
+        android:id="@+id/btn_post_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="post穿对象获取" />
+
+
+    <Button
+        android:id="@+id/btn_post_up_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="post传文件" />
+
+
+    <TextView
+        android:id="@+id/tv_respon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

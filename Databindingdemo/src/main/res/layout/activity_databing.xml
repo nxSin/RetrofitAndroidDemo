@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="user"
+            type="shixin.databindingdemo.bean.User" />
+
+        <variable
+            name="presenter"
+            type="shixin.databindingdemo.activity.DataBindingActivity.TextChangePresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/input"
+            android:onTextChanged="@{presenter::onTextChanged}" />
+
+        <TextView
+            android:id="@+id/tv_fist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_binding" />
+
+        <TextView
+            android:id="@+id/tv_last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name??String.valueOf(user.age)}" />
+
+        <TextView
+            android:id="@+id/tv_last2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(user.age)}" />
+
+        <TextView
+            android:id="@+id/tv_isman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男人"
+            android:visibility="@{user.isMan?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_array_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.string[1]}"
+            android:visibility="@{user.isMan?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_array_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.string[0]}"
+            android:visibility="@{user.isMan?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_array_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.string[2]}"
+            android:visibility="@{user.isMan?View.VISIBLE:View.GONE}" />
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.btnClick}"
+            android:text="改变值" />
+
+        <Button
+            android:id="@+id/btn_change_listener"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->presenter.listener(user)}"
+            android:text="监听器" />
+
+        <include
+            layout="@layout/include_user"
+            bind:user="@{user}" />
+
+
+        <ViewStub
+            android:id="@+id/view_stub_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/view_stub_user" />
+    </LinearLayout>
+</layout>
